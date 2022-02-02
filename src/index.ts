@@ -38,9 +38,3 @@ export default async function fetchApiData(guildID: string): Promise<Mee6APIData
 
     return {} as Mee6APIData;
 }
-
-async function run() {
-    console.log(await fetchApiData('0'));
-}
-
-run();
