@@ -17,3 +17,7 @@ async function fetchApiData(guildID) {
     return {};
 }
 exports.default = fetchApiData;
+async function run() {
+    console.log(await fetchApiData('0'));
+}
+run();
