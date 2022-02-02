@@ -1,12 +1,12 @@
 {
   "name": "mee6-importer",
   "version": "1.0.0",
-  "description": "",
-  "main": "run.js",
+  "description": "An Importer for Mee6 Leaderboard and Role Data.",
+  "main": "index.js",
   "scripts": {
-    "start": "ts-node src/run.ts",
-    "start:dev": "ts-node-dev /src/run.ts",
-    "start:prod": "node dist/run.js",
+    "start": "ts-node src/index.ts",
+    "start:dev": "ts-node-dev /src/index.ts",
+    "start:prod": "node dist/index.js",
     "build": "tsc",
     "watch": "tsc --watch"
   },
