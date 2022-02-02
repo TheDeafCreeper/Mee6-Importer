@@ -1,0 +1,26 @@
+{
+  "name": "mee6-importer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "run.js",
+  "scripts": {
+    "start": "ts-node src/run.ts",
+    "start:dev": "ts-node-dev /src/run.ts",
+    "start:prod": "node dist/run.js",
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "mee6-levels-api": "^1.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.14",
+    "ts-node": "^10.4.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.5"
+  }
+}
