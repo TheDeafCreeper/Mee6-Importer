@@ -1,0 +1,14 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 error pnpm": {
+    "code": "ERR_PNPM_LOCKFILE_NOT_FOUND",
+    "err": {
+      "name": "pnpm",
+      "message": "No lockfile found",
+      "code": "ERR_PNPM_LOCKFILE_NOT_FOUND",
+      "stack": "pnpm: No lockfile found\n    at Object.handler [as import] (/snapshot/dist/pnpm.cjs)\n    at async /snapshot/dist/pnpm.cjs\n    at async run (/snapshot/dist/pnpm.cjs)\n    at async runPnpm (/snapshot/dist/pnpm.cjs)\n    at async /snapshot/dist/pnpm.cjs"
+    }
+  }
+}
