@@ -1,6 +1,8 @@
 import Mee6LevelsApi from 'mee6-levels-api';
 import { User, Reward } from 'mee6-levels-api';
 import axios from 'axios';
+import fs from 'fs'
+import { Console } from 'console';
 
 interface Mee6GuildData {
     allow_join: boolean;
@@ -26,9 +28,13 @@ interface Mee6APIData {
 
 export default async function fetchApiData(guildID: string): Promise<Mee6APIData> {
     try {
-        const { data } = await axios.get(`https://mee6.xyz/api/plugins/levels/leaderboard/${guildID}`) as { data: Mee6APIData };
-        data.players = await Mee6LevelsApi.getLeaderboard(guildID)
-        data.role_rewards = await Mee6LevelsApi.getRoleRewards(guildID)
+        const { data } = await axios.get(`https://mee6.xyz/api/plugins/levels/leaderboard/${guildID}`).catch(err => {console.log(`Failed to fetch data. ${err}`); process.exit(1)}) as { data: Mee6APIData };
+        console.log("Fetching Leaderboard")
+        data.players = await Mee6LevelsApi.getLeaderboard(guildID).catch(err => {console.log(`Failed to fetch members. ${err}`); return []})
+        console.log(`Fetched ${data.players.length} members.`)
+        console.log(`Fetching Role Rewards.`)
+        data.role_rewards = await Mee6LevelsApi.getRoleRewards(guildID).catch(err => {console.log(`Failed to fetch role rewards. ${err}`); return []})
+        console.log(`Fetched ${data.role_rewards.length} rewards.`)
 
         return data;
     } catch (err) {
@@ -38,3 +44,14 @@ export default async function fetchApiData(guildID: string): Promise<Mee6APIData
 
     return {} as Mee6APIData;
 }
+
+async function main() {
+    let data = await fetchApiData("INSERT_ID_HERE").catch(err => {
+        console.error(err)
+    })
+
+    fs.writeFileSync("./data.json", JSON.stringify(data))
+    process.exit(0)
+}
+
+main()
